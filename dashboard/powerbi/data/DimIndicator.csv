@@ -1,0 +1,18 @@
+IndicatorKey,Indicator,IndicatorCode,Category,Unit
+1,Manufacturing value added (% of GDP),NV.IND.MANF.ZS,Structure,% of GDP
+2,Industry value added (% of GDP),NV.IND.TOTL.ZS,Structure,% of GDP
+3,Manufacturing value added (constant 2015 US$),NV.IND.MANF.KD,Output,constant 2015 US$
+4,Industry value added (constant 2015 US$),NV.IND.TOTL.KD,Output,constant 2015 US$
+5,Employment in industry (% of total),SL.IND.EMPL.ZS,Employment,% of employment
+6,Employment in services (% of total),SL.SRV.EMPL.ZS,Employment,% of employment
+7,Employment in agriculture (% of total),SL.AGR.EMPL.ZS,Employment,% of employment
+8,"Labour force, total",SL.TLF.TOTL.IN,Employment,persons
+9,Unemployment rate (% of labour force),SL.UEM.TOTL.ZS,Employment,%
+10,GDP per capita (constant 2015 US$),NY.GDP.PCAP.KD,Income & productivity,constant 2015 US$
+11,GDP per person employed (constant 2017 PPP $),SL.GDP.PCAP.EM.KD,Income & productivity,constant 2017 PPP $
+12,High-tech exports (% of manufactured exports),TX.VAL.TECH.MF.ZS,Trade & technology,% of manufactured exports
+13,"Population, total",SP.POP.TOTL,Context,persons
+14,Industrial employment (derived),derived,Employment,millions of persons
+15,Manufacturing VA per industrial worker (derived),derived,Income & productivity,constant 2015 US$
+16,Manufacturing VA per capita (derived),derived,Income & productivity,constant 2015 US$
+17,"GDP per capita, PPP (constant 2021 intl $)",NY.GDP.PCAP.PP.KD,Income & productivity,constant 2021 intl $

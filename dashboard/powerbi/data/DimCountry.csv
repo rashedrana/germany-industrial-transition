@@ -1,0 +1,11 @@
+CountryKey,Country,ISO_Code,Region
+1,Germany,DEU,Europe & Central Asia
+2,France,FRA,Europe & Central Asia
+3,Italy,ITA,Europe & Central Asia
+4,Poland,POL,Europe & Central Asia
+5,United Kingdom,GBR,Europe & Central Asia
+6,United States,USA,North America
+7,China,CHN,East Asia & Pacific
+8,Japan,JPN,East Asia & Pacific
+9,European Union,EUU,Aggregates
+10,World,WLD,Aggregates

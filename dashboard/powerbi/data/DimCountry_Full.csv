@@ -1,0 +1,262 @@
+CountryKey,Country,ISO_Code,Region
+1,Aruba,ABW,Latin America & Caribbean
+2,Africa Eastern and Southern,AFE,Aggregates
+3,Afghanistan,AFG,"Middle East, North Africa, Afghanistan & Pakistan"
+4,Africa Western and Central,AFW,Aggregates
+5,Angola,AGO,Sub-Saharan Africa
+6,Albania,ALB,Europe & Central Asia
+7,Andorra,AND,Europe & Central Asia
+8,Arab World,ARB,Aggregates
+9,United Arab Emirates,ARE,"Middle East, North Africa, Afghanistan & Pakistan"
+10,Argentina,ARG,Latin America & Caribbean
+11,Armenia,ARM,Europe & Central Asia
+12,American Samoa,ASM,East Asia & Pacific
+13,Antigua and Barbuda,ATG,Latin America & Caribbean
+14,Australia,AUS,East Asia & Pacific
+15,Austria,AUT,Europe & Central Asia
+16,Azerbaijan,AZE,Europe & Central Asia
+17,Burundi,BDI,Sub-Saharan Africa
+18,Belgium,BEL,Europe & Central Asia
+19,Benin,BEN,Sub-Saharan Africa
+20,Burkina Faso,BFA,Sub-Saharan Africa
+21,Bangladesh,BGD,South Asia
+22,Bulgaria,BGR,Europe & Central Asia
+23,Bahrain,BHR,"Middle East, North Africa, Afghanistan & Pakistan"
+24,"Bahamas, The",BHS,Latin America & Caribbean
+25,Bosnia and Herzegovina,BIH,Europe & Central Asia
+26,Belarus,BLR,Europe & Central Asia
+27,Belize,BLZ,Latin America & Caribbean
+28,Bermuda,BMU,North America
+29,Bolivia,BOL,Latin America & Caribbean
+30,Brazil,BRA,Latin America & Caribbean
+31,Barbados,BRB,Latin America & Caribbean
+32,Brunei Darussalam,BRN,East Asia & Pacific
+33,Bhutan,BTN,South Asia
+34,Botswana,BWA,Sub-Saharan Africa
+35,Central African Republic,CAF,Sub-Saharan Africa
+36,Canada,CAN,North America
+37,Central Europe and the Baltics,CEB,Aggregates
+38,Switzerland,CHE,Europe & Central Asia
+39,Channel Islands,CHI,Europe & Central Asia
+40,Chile,CHL,Latin America & Caribbean
+41,China,CHN,East Asia & Pacific
+42,Cote d'Ivoire,CIV,Sub-Saharan Africa
+43,Cameroon,CMR,Sub-Saharan Africa
+44,"Congo, Dem. Rep.",COD,Sub-Saharan Africa
+45,"Congo, Rep.",COG,Sub-Saharan Africa
+46,Colombia,COL,Latin America & Caribbean
+47,Comoros,COM,Sub-Saharan Africa
+48,Cabo Verde,CPV,Sub-Saharan Africa
+49,Costa Rica,CRI,Latin America & Caribbean
+50,Caribbean small states,CSS,Aggregates
+51,Cuba,CUB,Latin America & Caribbean
+52,Curacao,CUW,Latin America & Caribbean
+53,Cayman Islands,CYM,Latin America & Caribbean
+54,Cyprus,CYP,Europe & Central Asia
+55,Czechia,CZE,Europe & Central Asia
+56,Germany,DEU,Europe & Central Asia
+57,Djibouti,DJI,"Middle East, North Africa, Afghanistan & Pakistan"
+58,Dominica,DMA,Latin America & Caribbean
+59,Denmark,DNK,Europe & Central Asia
+60,Dominican Republic,DOM,Latin America & Caribbean
+61,Algeria,DZA,"Middle East, North Africa, Afghanistan & Pakistan"
+62,East Asia & Pacific (excluding high income),EAP,Aggregates
+63,Early-demographic dividend,EAR,Aggregates
+64,East Asia & Pacific,EAS,Aggregates
+65,Europe & Central Asia (excluding high income),ECA,Aggregates
+66,Europe & Central Asia,ECS,Aggregates
+67,Ecuador,ECU,Latin America & Caribbean
+68,"Egypt, Arab Rep.",EGY,"Middle East, North Africa, Afghanistan & Pakistan"
+69,Euro area,EMU,Aggregates
+70,Eritrea,ERI,Sub-Saharan Africa
+71,Spain,ESP,Europe & Central Asia
+72,Estonia,EST,Europe & Central Asia
+73,Ethiopia,ETH,Sub-Saharan Africa
+74,European Union,EUU,Aggregates
+75,"Fragility, Conflict, and Violence (FCV) situations",FCV,Aggregates
+76,Finland,FIN,Europe & Central Asia
+77,Fiji,FJI,East Asia & Pacific
+78,France,FRA,Europe & Central Asia
+79,Faroe Islands,FRO,Europe & Central Asia
+80,"Micronesia, Fed. Sts.",FSM,East Asia & Pacific
+81,Gabon,GAB,Sub-Saharan Africa
+82,United Kingdom,GBR,Europe & Central Asia
+83,Georgia,GEO,Europe & Central Asia
+84,Ghana,GHA,Sub-Saharan Africa
+85,Gibraltar,GIB,Europe & Central Asia
+86,Guinea,GIN,Sub-Saharan Africa
+87,"Gambia, The",GMB,Sub-Saharan Africa
+88,Guinea-Bissau,GNB,Sub-Saharan Africa
+89,Equatorial Guinea,GNQ,Sub-Saharan Africa
+90,Greece,GRC,Europe & Central Asia
+91,Grenada,GRD,Latin America & Caribbean
+92,Greenland,GRL,Europe & Central Asia
+93,Guatemala,GTM,Latin America & Caribbean
+94,Guam,GUM,East Asia & Pacific
+95,Guyana,GUY,Latin America & Caribbean
+96,"Hong Kong SAR, China",HKG,East Asia & Pacific
+97,Honduras,HND,Latin America & Caribbean
+98,Heavily indebted poor countries (HIPC),HPC,Aggregates
+99,Croatia,HRV,Europe & Central Asia
+100,Haiti,HTI,Latin America & Caribbean
+101,Hungary,HUN,Europe & Central Asia
+102,IBRD only,IBD,Aggregates
+103,IDA & IBRD total,IBT,Aggregates
+104,IDA total,IDA,Aggregates
+105,IDA blend,IDB,Aggregates
+106,Indonesia,IDN,East Asia & Pacific
+107,IDA only,IDX,Aggregates
+108,Isle of Man,IMN,Europe & Central Asia
+109,India,IND,South Asia
+110,Ireland,IRL,Europe & Central Asia
+111,"Iran, Islamic Rep.",IRN,"Middle East, North Africa, Afghanistan & Pakistan"
+112,Iraq,IRQ,"Middle East, North Africa, Afghanistan & Pakistan"
+113,Iceland,ISL,Europe & Central Asia
+114,Israel,ISR,"Middle East, North Africa, Afghanistan & Pakistan"
+115,Italy,ITA,Europe & Central Asia
+116,Jamaica,JAM,Latin America & Caribbean
+117,Jordan,JOR,"Middle East, North Africa, Afghanistan & Pakistan"
+118,Japan,JPN,East Asia & Pacific
+119,Kazakhstan,KAZ,Europe & Central Asia
+120,Kenya,KEN,Sub-Saharan Africa
+121,Kyrgyz Republic,KGZ,Europe & Central Asia
+122,Cambodia,KHM,East Asia & Pacific
+123,Kiribati,KIR,East Asia & Pacific
+124,St. Kitts and Nevis,KNA,Latin America & Caribbean
+125,"Korea, Rep.",KOR,East Asia & Pacific
+126,Kuwait,KWT,"Middle East, North Africa, Afghanistan & Pakistan"
+127,Latin America & Caribbean (excluding high income),LAC,Aggregates
+128,Lao PDR,LAO,East Asia & Pacific
+129,Lebanon,LBN,"Middle East, North Africa, Afghanistan & Pakistan"
+130,Liberia,LBR,Sub-Saharan Africa
+131,Libya,LBY,"Middle East, North Africa, Afghanistan & Pakistan"
+132,St. Lucia,LCA,Latin America & Caribbean
+133,Latin America & Caribbean,LCN,Aggregates
+134,Least developed countries: UN classification,LDC,Aggregates
+135,Liechtenstein,LIE,Europe & Central Asia
+136,Sri Lanka,LKA,South Asia
+137,Low & middle income,LMY,Aggregates
+138,Lesotho,LSO,Sub-Saharan Africa
+139,Late-demographic dividend,LTE,Aggregates
+140,Lithuania,LTU,Europe & Central Asia
+141,Luxembourg,LUX,Europe & Central Asia
+142,Latvia,LVA,Europe & Central Asia
+143,"Macao SAR, China",MAC,East Asia & Pacific
+144,St. Martin (French part),MAF,Latin America & Caribbean
+145,Morocco,MAR,"Middle East, North Africa, Afghanistan & Pakistan"
+146,Monaco,MCO,Europe & Central Asia
+147,Moldova,MDA,Europe & Central Asia
+148,Madagascar,MDG,Sub-Saharan Africa
+149,Maldives,MDV,South Asia
+150,"Middle East, North Africa, Afghanistan & Pakistan",MEA,Aggregates
+151,Mexico,MEX,Latin America & Caribbean
+152,Marshall Islands,MHL,East Asia & Pacific
+153,Middle income,MIC,Aggregates
+154,North Macedonia,MKD,Europe & Central Asia
+155,Mali,MLI,Sub-Saharan Africa
+156,Malta,MLT,"Middle East, North Africa, Afghanistan & Pakistan"
+157,Myanmar,MMR,East Asia & Pacific
+158,"Middle East, North Africa, Afghanistan & Pakistan (excluding high income)",MNA,Aggregates
+159,Montenegro,MNE,Europe & Central Asia
+160,Mongolia,MNG,East Asia & Pacific
+161,Northern Mariana Islands,MNP,East Asia & Pacific
+162,Mozambique,MOZ,Sub-Saharan Africa
+163,Mauritania,MRT,Sub-Saharan Africa
+164,Mauritius,MUS,Sub-Saharan Africa
+165,Malawi,MWI,Sub-Saharan Africa
+166,Malaysia,MYS,East Asia & Pacific
+167,North America,NAC,Aggregates
+168,Namibia,NAM,Sub-Saharan Africa
+169,New Caledonia,NCL,East Asia & Pacific
+170,Niger,NER,Sub-Saharan Africa
+171,Nigeria,NGA,Sub-Saharan Africa
+172,Nicaragua,NIC,Latin America & Caribbean
+173,Netherlands,NLD,Europe & Central Asia
+174,Norway,NOR,Europe & Central Asia
+175,Nepal,NPL,South Asia
+176,Naoero,NRU,East Asia & Pacific
+177,New Zealand,NZL,East Asia & Pacific
+178,OECD members,OED,Aggregates
+179,Oman,OMN,"Middle East, North Africa, Afghanistan & Pakistan"
+180,Other small states,OSS,Aggregates
+181,Pakistan,PAK,"Middle East, North Africa, Afghanistan & Pakistan"
+182,Panama,PAN,Latin America & Caribbean
+183,Peru,PER,Latin America & Caribbean
+184,Philippines,PHL,East Asia & Pacific
+185,Palau,PLW,East Asia & Pacific
+186,Papua New Guinea,PNG,East Asia & Pacific
+187,Poland,POL,Europe & Central Asia
+188,Pre-demographic dividend,PRE,Aggregates
+189,Puerto Rico (US),PRI,Latin America & Caribbean
+190,"Korea, Dem. People's Rep.",PRK,East Asia & Pacific
+191,Portugal,PRT,Europe & Central Asia
+192,Paraguay,PRY,Latin America & Caribbean
+193,West Bank and Gaza,PSE,"Middle East, North Africa, Afghanistan & Pakistan"
+194,Pacific island small states,PSS,Aggregates
+195,Post-demographic dividend,PST,Aggregates
+196,French Polynesia,PYF,East Asia & Pacific
+197,Qatar,QAT,"Middle East, North Africa, Afghanistan & Pakistan"
+198,Romania,ROU,Europe & Central Asia
+199,Russian Federation,RUS,Europe & Central Asia
+200,Rwanda,RWA,Sub-Saharan Africa
+201,South Asia,SAS,Aggregates
+202,Saudi Arabia,SAU,"Middle East, North Africa, Afghanistan & Pakistan"
+203,Sudan,SDN,Sub-Saharan Africa
+204,Senegal,SEN,Sub-Saharan Africa
+205,Singapore,SGP,East Asia & Pacific
+206,Solomon Islands,SLB,East Asia & Pacific
+207,Sierra Leone,SLE,Sub-Saharan Africa
+208,El Salvador,SLV,Latin America & Caribbean
+209,San Marino,SMR,Europe & Central Asia
+210,"Somalia, Fed. Rep.",SOM,Sub-Saharan Africa
+211,Serbia,SRB,Europe & Central Asia
+212,Sub-Saharan Africa (excluding high income),SSA,Aggregates
+213,South Sudan,SSD,Sub-Saharan Africa
+214,Sub-Saharan Africa,SSF,Aggregates
+215,Small states,SST,Aggregates
+216,Sao Tome and Principe,STP,Sub-Saharan Africa
+217,Suriname,SUR,Latin America & Caribbean
+218,Slovak Republic,SVK,Europe & Central Asia
+219,Slovenia,SVN,Europe & Central Asia
+220,Sweden,SWE,Europe & Central Asia
+221,Eswatini,SWZ,Sub-Saharan Africa
+222,Sint Maarten (Dutch part),SXM,Latin America & Caribbean
+223,Seychelles,SYC,Sub-Saharan Africa
+224,Syrian Arab Republic,SYR,"Middle East, North Africa, Afghanistan & Pakistan"
+225,Turks and Caicos Islands,TCA,Latin America & Caribbean
+226,Chad,TCD,Sub-Saharan Africa
+227,East Asia & Pacific (IDA & IBRD countries),TEA,Aggregates
+228,Europe & Central Asia (IDA & IBRD countries),TEC,Aggregates
+229,Togo,TGO,Sub-Saharan Africa
+230,Thailand,THA,East Asia & Pacific
+231,Tajikistan,TJK,Europe & Central Asia
+232,Turkmenistan,TKM,Europe & Central Asia
+233,Latin America & the Caribbean (IDA & IBRD countries),TLA,Aggregates
+234,Timor-Leste,TLS,East Asia & Pacific
+235,"Middle East, North Africa, Afghanistan & Pakistan (IDA & IBRD)",TMN,Aggregates
+236,Tonga,TON,East Asia & Pacific
+237,South Asia (IDA & IBRD),TSA,Aggregates
+238,Sub-Saharan Africa (IDA & IBRD countries),TSS,Aggregates
+239,Trinidad and Tobago,TTO,Latin America & Caribbean
+240,Tunisia,TUN,"Middle East, North Africa, Afghanistan & Pakistan"
+241,Turkiye,TUR,Europe & Central Asia
+242,Tuvalu,TUV,East Asia & Pacific
+243,Tanzania,TZA,Sub-Saharan Africa
+244,Uganda,UGA,Sub-Saharan Africa
+245,Ukraine,UKR,Europe & Central Asia
+246,Uruguay,URY,Latin America & Caribbean
+247,United States,USA,North America
+248,Uzbekistan,UZB,Europe & Central Asia
+249,St. Vincent and the Grenadines,VCT,Latin America & Caribbean
+250,"Venezuela, RB",VEN,Latin America & Caribbean
+251,British Virgin Islands,VGB,Latin America & Caribbean
+252,Virgin Islands (U.S.),VIR,Latin America & Caribbean
+253,Viet Nam,VNM,East Asia & Pacific
+254,Vanuatu,VUT,East Asia & Pacific
+255,World,WLD,Aggregates
+256,Samoa,WSM,East Asia & Pacific
+257,Kosovo,XKX,Europe & Central Asia
+258,"Yemen, Rep.",YEM,"Middle East, North Africa, Afghanistan & Pakistan"
+259,South Africa,ZAF,Sub-Saharan Africa
+260,Zambia,ZMB,Sub-Saharan Africa
+261,Zimbabwe,ZWE,Sub-Saharan Africa
