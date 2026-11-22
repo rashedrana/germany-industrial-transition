@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Germany Industrial Transition Dashboard — Still the Workshop of Europe? 1991–2024</title>
+<meta name="description" content="Interactive dashboard on Germany's industrial transition 1991–2024: manufacturing share, output, industrial employment, productivity and high-tech exports, with nine comparison countries. Real data: World Bank WDI. Companion to the research paper by Rashed Rana.">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+:root{
+  --bg:#f7f6fa; --card:#ffffff; --ink:#1e1b26; --muted:#6d6879; --border:#e4e0ee;
+  --accent:#7c3aed; --accent2:#0078d4; --good:#059669; --bad:#dc2626;
+  --shadow:0 6px 22px rgba(30,20,60,.08); --radius:14px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--ink)}
+.wrap{max-width:1240px;margin:0 auto;padding:22px 20px 46px}
+header{display:flex;flex-wrap:wrap;gap:12px;align-items:flex-end;justify-content:space-between;margin-bottom:16px}
+h1{font-size:25px;line-height:1.2}
+h1 .thin{color:var(--accent)}
+.sub{color:var(--muted);font-size:13px;margin-top:4px}
+.links{display:flex;gap:8px}
+.links a{font-size:12px;font-weight:600;border:1px solid var(--border);background:var(--card);padding:7px 12px;border-radius:999px;color:var(--ink);text-decoration:none}
+.links a:hover{border-color:var(--accent);color:var(--accent)}
+.panel{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px;margin-bottom:14px}
+.panel h3{font-size:13px;letter-spacing:1.1px;color:var(--muted);margin-bottom:10px;text-transform:uppercase}
+.controls{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:18px}
+.btnrow{display:flex;gap:7px;flex-wrap:wrap}
+.cbtn{border:1px solid var(--border);background:var(--card);color:var(--ink);font-size:13px;padding:8px 14px;border-radius:999px;cursor:pointer;font-weight:600}
+.cbtn.on{background:var(--accent);border-color:var(--accent);color:#fff}
+.cbtn.tgl.on{background:var(--accent2);border-color:var(--accent2)}
+input[type=range]{width:100%;accent-color:var(--accent);margin-top:8px}
+.yearbig{font-size:30px;font-weight:800;color:var(--accent);line-height:1}
+.kpis{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-bottom:14px}
+.kpi{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:14px}
+.kpi .v{font-size:23px;font-weight:800}
+.kpi .u{font-size:12px;color:var(--muted);font-weight:600}
+.kpi .l{font-size:11.5px;color:var(--muted);margin-top:2px}
+.kpi .d{font-size:11.5px;font-weight:700;margin-top:6px}
+.d.up{color:var(--good)} .d.dn{color:var(--bad)} .d.flat{color:var(--muted)}
+.grid2{display:grid;grid-template-columns:1.6fr 1fr;gap:14px}
+.grid2b{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.chartbox{position:relative;height:300px}
+.chartbox.sm{height:262px}
+footer{color:var(--muted);font-size:12px;line-height:1.7;margin-top:18px}
+footer a{color:var(--accent)}
+@media (max-width:980px){ .kpis{grid-template-columns:repeat(3,1fr)} .controls,.grid2,.grid2b{grid-template-columns:1fr} }
+@media (max-width:560px){ .kpis{grid-template-columns:repeat(2,1fr)} }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div>
+      <h1>Germany's Industrial Transition <span class="thin">Dashboard</span></h1>
+      <div class="sub">Still the workshop of Europe? Manufacturing, jobs and productivity 1991–2024 · Germany with France, Italy, Poland, the UK, the US, China, Japan, the EU &amp; the world · Data: World Bank WDI</div>
+    </div>
+    <div class="links">
+      <a href="https://github.com/rashedrana/germany-industrial-transition" target="_blank" rel="noopener">GitHub Project</a>
+      <a href="https://github.com/rashedrana/germany-industrial-transition" target="_blank" rel="noopener">Research Paper (repo)</a>
+      <a href="https://rashedrana.github.io" target="_blank" rel="noopener">Portfolio</a>
+    </div>
+  </header>
+
+  <!-- ============ SLICERS ============ -->
+  <div class="panel">
+    <div class="controls">
+      <div>
+        <h3>Country (main view)</h3>
+        <div class="btnrow" id="countryBtns"></div>
+      </div>
+      <div>
+        <h3>Focus year</h3>
+        <div style="display:flex;align-items:center;gap:14px">
+          <div class="yearbig" id="yearBig">2024</div>
+          <div style="flex:1">
+            <input type="range" id="yearSlider" min="1991" max="2024" step="1" value="2024">
+            <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--muted)"><span>1991</span><span>2024</span></div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <h3>Trend chart shows</h3>
+        <div class="btnrow" id="metricBtns">
+          <button class="cbtn on" data-m="manufShare">Manufacturing share</button>
+          <button class="cbtn" data-m="manufVA">Manufacturing output</button>
+          <button class="cbtn" data-m="gdpPerWorker">GDP per worker</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ KPI CARDS ============ -->
+  <div class="kpis" id="kpis"></div>
+
+  <!-- ============ CHARTS ROW 1 ============ -->
+  <div class="grid2">
+    <div class="panel">
+      <h3 id="trendTitle">Manufacturing value added (% of GDP)</h3>
+      <div style="margin-bottom:8px" class="btnrow" id="trendToggles"></div>
+      <div class="chartbox"><canvas id="trendChart"></canvas></div>
+    </div>
+    <div class="panel">
+      <h3 id="compareTitle">Manufacturing share by country — 2024</h3>
+      <div class="chartbox"><canvas id="compareChart"></canvas></div>
+      <div style="font-size:12px;color:var(--muted);margin-top:8px">Click a bar to make that country the main view. Countries without data for the focus year are hidden.</div>
+    </div>
+  </div>
+
+  <!-- ============ CHARTS ROW 2 ============ -->
+  <div class="grid2b">
+    <div class="panel">
+      <h3 id="empTitle">Employment mix — Germany (% of jobs, stacked)</h3>
+      <div class="chartbox sm"><canvas id="empChart"></canvas></div>
+    </div>
+    <div class="panel">
+      <h3 id="ojTitle">Output vs industrial jobs — Germany</h3>
+      <div class="chartbox sm"><canvas id="ojChart"></canvas></div>
+    </div>
+  </div>
+
+  <!-- ============ CHARTS ROW 3 ============ -->
+  <div class="grid2b">
+    <div class="panel">
+      <h3 id="prodTitle">Productivity — Germany</h3>
+      <div class="chartbox sm"><canvas id="prodChart"></canvas></div>
+    </div>
+    <div class="panel">
+      <h3 id="htTitle">High-tech exports — share of manufactured exports, 2024</h3>
+      <div class="chartbox sm"><canvas id="htChart"></canvas></div>
+    </div>
+  </div>
+
+  <!-- ============ CROSS-SECTION ============ -->
+  <div class="panel">
+    <h3>Does being rich mean de-industrialising? Manufacturing share vs income, 183 countries (2023)</h3>
+    <div class="chartbox sm"><canvas id="crossChart"></canvas></div>
+    <div style="font-size:12px;color:var(--muted);margin-top:8px">Each dot is a country (2023). Germany (purple) sits well above the pack for its income level — the paper's regression finds income explains almost none of the difference between countries (R² = 0.008).</div>
+  </div>
+
+  <footer>
+    Built by <strong>Rashed Rana</strong> as the interactive companion to the research paper
+    <em>“Still the Workshop of Europe? Germany's Industrial Transition, 1991–2024”</em> — the full analysis, SQL queries and paper live in the
+    <a href="https://github.com/rashedrana/germany-industrial-transition" target="_blank" rel="noopener">GitHub project</a>.
+    This web edition mirrors the Power BI report (star-schema model, DAX measures and page layout in the repo under
+    <code>dashboard/powerbi/</code>). Data: World Bank World Development Indicators, accessed 2026.
+    Industrial employment and value added per worker are derived as documented in the paper (labour force × employment rate × industry share).
+  </footer>
+</div>
+
+<script>
+const DATA = /*__DATA__*/{};
+const YEARS = DATA.years;
+const CCOLORS = {"Germany":"#7c3aed","France":"#0078d4","Italy":"#059669","Poland":"#dc2626","United Kingdom":"#d97706","United States":"#0891b2","China":"#db2777","Japan":"#65a30d","European Union":"#64748b","World":"#a8a29e"};
+const ECOLORS = {"Agriculture":"#84cc16","Industry":"#7c3aed","Services":"#0078d4"};
+const METRICS = {
+  manufShare:  {label:"Manufacturing value added (% of GDP)", unit:"%"},
+  manufVA:     {label:"Manufacturing value added (constant 2015 US$, billions)", unit:" $bn"},
+  gdpPerWorker:{label:"GDP per person employed (constant 2017 PPP $)", unit:" $"}
+};
+let primary = "Germany", focusYear = 2024, metric = "manufShare";
+let trendOn = {}; DATA.countries.forEach(c=>trendOn[c]=true);
+
+Chart.defaults.font.family = "-apple-system,'Segoe UI',Roboto,sans-serif";
+Chart.defaults.color = "#6d6879";
+
+const yi = y => YEARS.indexOf(y);
+const S = c => DATA.series[c];
+const firstIdx = (arr) => arr.findIndex(v => v !== null && v !== undefined);
+
+/* ---------- controls ---------- */
+const cb = document.getElementById("countryBtns");
+DATA.countries.forEach(c=>{
+  const b=document.createElement("button"); b.className="cbtn"+(c===primary?" on":""); b.textContent=c;
+  b.onclick=()=>{ primary=c; cb.querySelectorAll(".cbtn").forEach(x=>x.classList.toggle("on",x.textContent===c)); refresh(); };
+  cb.appendChild(b);
+});
+const tt = document.getElementById("trendToggles");
+DATA.countries.forEach(c=>{
+  const b=document.createElement("button"); b.className="cbtn tgl on"; b.textContent=c; b.style.borderColor=CCOLORS[c];
+  b.onclick=()=>{ trendOn[c]=!trendOn[c]; b.classList.toggle("on",trendOn[c]); drawTrend(); };
+  tt.appendChild(b);
+});
+document.getElementById("yearSlider").addEventListener("input", e=>{
+  focusYear = +e.target.value; document.getElementById("yearBig").textContent = focusYear; refresh();
+});
+document.querySelectorAll("#metricBtns .cbtn").forEach(b=>{
+  b.onclick=()=>{ metric=b.dataset.m; document.querySelectorAll("#metricBtns .cbtn").forEach(x=>x.classList.toggle("on",x===b)); drawTrend(); };
+});
+
+/* ---------- KPI cards ---------- */
+function kpiHTML(){
+  const s=S(primary), i=yi(focusYear);
+  function card(key, valFmt, unit, label, goodUp, pct){
+    const arr=s[key], i0=firstIdx(arr);
+    if(i0<0 || arr[i]===null || arr[i]===undefined) return `<div class="kpi"><div><span class="v">—</span></div><div class="l">${label} — ${primary}, ${focusYear}: no data</div></div>`;
+    const d = pct ? (arr[i]/arr[i0]-1)*100 : arr[i]-arr[i0];
+    const up = d>0.05, dn = d<-0.05;
+    const cls = !up && !dn ? "flat" : ((up && goodUp) || (dn && !goodUp) ? "up" : "dn");
+    const arrow = up ? "▲" : dn ? "▼" : "■";
+    const dv = (d>0?"+":"") + d.toFixed(1) + (pct?"%":"");
+    const du = pct ? `% vs ${YEARS[i0]}` : `${unit==="%"?"pp":""} vs ${YEARS[i0]}`.trim();
+    return `<div class="kpi"><div><span class="v">${valFmt(arr[i])}</span> <span class="u">${unit}</span></div><div class="l">${label} — ${primary}, ${focusYear}</div><div class="d ${cls}">${arrow} ${dv} ${du}</div></div>`;
+  }
+  const f1 = v=>v.toFixed(1), f0 = v=>Math.round(v).toLocaleString("en-US");
+  return [
+    card("manufShare", f1, "%", "Manufacturing share of GDP", false, false),
+    card("manufVA", f0, "$bn", "Manufacturing output (real)", true, true),
+    card("indEmp", v=>v.toFixed(2), "m", "Industrial employment", true, true),
+    card("gdpPerWorker", f0, "$", "GDP per worker (PPP)", true, true),
+    card("hightech", f1, "%", "High-tech export share", true, false),
+    card("industryShare", f1, "%", "Industry share of GDP", false, false)
+  ].join("");
+}
+
+/* ---------- charts ---------- */
+let trendChart, compareChart, empChart, ojChart, prodChart, htChart, crossChart;
+function drawTrend(){
+  const ds = DATA.countries.filter(c=>trendOn[c]).map(c=>({
+    label:c, data:S(c)[metric], borderColor:CCOLORS[c], backgroundColor:CCOLORS[c],
+    borderWidth: c===primary?3:2, pointRadius:0, pointHoverRadius:4, tension:.25, spanGaps:true
+  }));
+  document.getElementById("trendTitle").textContent = METRICS[metric].label;
+  if(trendChart) trendChart.destroy();
+  trendChart = new Chart(document.getElementById("trendChart"), {type:"line",
+    data:{labels:YEARS, datasets:ds},
+    options:{responsive:true, maintainAspectRatio:false, interaction:{mode:"index", intersect:false},
+      scales:{y:{grid:{color:"#eee9f7"}}, x:{grid:{display:false}, ticks:{maxTicksLimit:9}}},
+      plugins:{legend:{position:"bottom"}}}});
+}
+function drawCompare(){
+  document.getElementById("compareTitle").textContent = `Manufacturing share by country — ${focusYear}`;
+  const pairs = DATA.countries.map(c=>[c, S(c).manufShare[yi(focusYear)]]).filter(p=>p[1]!==null && p[1]!==undefined);
+  if(compareChart) compareChart.destroy();
+  compareChart = new Chart(document.getElementById("compareChart"), {type:"bar",
+    data:{labels:pairs.map(p=>p[0]), datasets:[{data:pairs.map(p=>p[1]), backgroundColor:pairs.map(p=>CCOLORS[p[0]]), borderRadius:6}]},
+    options:{responsive:true, maintainAspectRatio:false,
+      scales:{y:{beginAtZero:true, title:{display:true, text:"% of GDP"}}, x:{grid:{display:false}}},
+      plugins:{legend:{display:false}},
+      onClick:(e,els)=>{ if(els.length){ const c=pairs[els[0].index][0]; primary=c;
+        cb.querySelectorAll(".cbtn").forEach(x=>x.classList.toggle("on",x.textContent===c)); refresh(); } }}});
+}
+function drawEmp(){
+  document.getElementById("empTitle").textContent = `Employment mix — ${primary} (% of jobs, stacked)`;
+  const s=S(primary);
+  if(empChart) empChart.destroy();
+  empChart = new Chart(document.getElementById("empChart"), {type:"bar",
+    data:{labels:YEARS, datasets:[
+      {label:"Agriculture", data:s.empAgri, backgroundColor:ECOLORS.Agriculture, stack:"e", borderWidth:0},
+      {label:"Industry", data:s.empIndustry, backgroundColor:ECOLORS.Industry, stack:"e", borderWidth:0},
+      {label:"Services", data:s.empServices, backgroundColor:ECOLORS.Services, stack:"e", borderWidth:0}]},
+    options:{responsive:true, maintainAspectRatio:false,
+      scales:{x:{stacked:true, grid:{display:false}, ticks:{maxTicksLimit:9}}, y:{stacked:true, min:0, max:100, title:{display:true, text:"% of employment"}}},
+      plugins:{legend:{position:"bottom", labels:{boxWidth:11, font:{size:10.5}}}}}});
+}
+function drawOJ(){
+  document.getElementById("ojTitle").textContent = `Output vs industrial jobs — ${primary}`;
+  const s=S(primary);
+  if(ojChart) ojChart.destroy();
+  ojChart = new Chart(document.getElementById("ojChart"), {type:"line",
+    data:{labels:YEARS, datasets:[
+      {label:"Manufacturing output ($bn, real)", data:s.manufVA, borderColor:"#7c3aed", backgroundColor:"#7c3aed", yAxisID:"y", borderWidth:2.5, pointRadius:0, tension:.25, spanGaps:true},
+      {label:"Industrial employment (millions)", data:s.indEmp, borderColor:"#dc2626", backgroundColor:"#dc2626", yAxisID:"y1", borderWidth:2.5, pointRadius:0, tension:.25, spanGaps:true}]},
+    options:{responsive:true, maintainAspectRatio:false, interaction:{mode:"index", intersect:false},
+      scales:{y:{position:"left", title:{display:true, text:"$bn (constant 2015 US$)"}}, y1:{position:"right", grid:{drawOnChartArea:false}, title:{display:true, text:"millions"}},
+        x:{grid:{display:false}, ticks:{maxTicksLimit:9}}},
+      plugins:{legend:{position:"bottom"}}}});
+}
+function drawProd(){
+  document.getElementById("prodTitle").textContent = `Productivity — ${primary}`;
+  const s=S(primary);
+  if(prodChart) prodChart.destroy();
+  prodChart = new Chart(document.getElementById("prodChart"), {type:"line",
+    data:{labels:YEARS, datasets:[
+      {label:"GDP per person employed (PPP $)", data:s.gdpPerWorker, borderColor:"#0078d4", backgroundColor:"#0078d4", borderWidth:2.5, pointRadius:0, tension:.25, spanGaps:true},
+      {label:"Manufacturing VA per industrial worker ($)", data:s.vaPerWorker, borderColor:"#059669", backgroundColor:"#059669", borderWidth:2.5, pointRadius:0, tension:.25, spanGaps:true}]},
+    options:{responsive:true, maintainAspectRatio:false, interaction:{mode:"index", intersect:false},
+      scales:{y:{title:{display:true, text:"US$ per worker"}}, x:{grid:{display:false}, ticks:{maxTicksLimit:9}}},
+      plugins:{legend:{position:"bottom"}}}});
+}
+function drawHT(){
+  document.getElementById("htTitle").textContent = `High-tech exports — share of manufactured exports, ${focusYear}`;
+  const pairs = DATA.countries.map(c=>[c, S(c).hightech[yi(focusYear)]]).filter(p=>p[1]!==null && p[1]!==undefined).sort((a,b)=>b[1]-a[1]);
+  if(htChart) htChart.destroy();
+  htChart = new Chart(document.getElementById("htChart"), {type:"bar",
+    data:{labels:pairs.map(p=>p[0]), datasets:[{data:pairs.map(p=>p[1]), backgroundColor:pairs.map(p=>CCOLORS[p[0]]), borderRadius:6}]},
+    options:{indexAxis:"y", responsive:true, maintainAspectRatio:false,
+      scales:{x:{title:{display:true, text:"% of manufactured exports"}}, y:{grid:{display:false}}}, plugins:{legend:{display:false}}}});
+}
+function drawCross(){
+  const pts = DATA.cross2023.map(d=>({x:d.gdpPcapPPP, y:d.manufShare, iso:d.iso, country:d.country}));
+  const deu = pts.filter(p=>p.iso==="DEU"), rest = pts.filter(p=>p.iso!=="DEU");
+  if(crossChart) crossChart.destroy();
+  crossChart = new Chart(document.getElementById("crossChart"), {type:"scatter",
+    data:{datasets:[
+      {label:"Countries (2023)", data:rest, backgroundColor:"rgba(0,120,212,.45)", pointRadius:3.5},
+      {label:"Germany", data:deu, backgroundColor:"#7c3aed", pointRadius:7, pointStyle:"rectRot"}]},
+    options:{responsive:true, maintainAspectRatio:false,
+      scales:{x:{type:"logarithmic", title:{display:true, text:"GDP per capita, PPP (constant 2021 intl $, log scale)"}},
+              y:{title:{display:true, text:"Manufacturing share of GDP (%)"}}},
+      plugins:{legend:{position:"bottom"},
+        tooltip:{callbacks:{label:(c)=>`${c.raw.country}: ${c.raw.y}% of GDP, $${Math.round(c.raw.x).toLocaleString("en-US")} per capita`}}}}});
+}
+function refresh(){
+  document.getElementById("kpis").innerHTML = kpiHTML();
+  drawTrend(); drawCompare(); drawEmp(); drawOJ(); drawProd(); drawHT();
+}
+refresh();
+drawCross();
+</script>
+</body>
+</html>
