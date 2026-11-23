@@ -1,5 +1,5 @@
 # Business Questions & Chart Problem-Solving
-## Germany Industrial Transition Dashboard — 14 questions, 14 visual types
+## Germany Industrial Transition Dashboard — 19 questions, 19 visual types
 
 Dataset: World Bank World Development Indicators (full extract in `powerbi/data/`):
 **261 countries in the dimension · 10-country panel 1991–2024 · 183-country
@@ -120,8 +120,71 @@ vs 0.51%/yr (2010–2024).
 
 ---
 
+## Retrofit questions (Q15–Q19, added 2026-11-23 — advanced chart types)
+
+**Q15. How did the manufacturing league table actually move between the
+benchmark years?**
+Visual: **Bump chart** (manufacturing-share rank at 1991 · 2000 · 2010 ·
+2024; ranked among panel countries with data in that year — 1991: 5,
+2000: 9, 2010: 10, 2024: 9).
+Answer: Germany starts **#1 in 1991** (24.6%), is passed by Japan by 2000
+(**#2**), then by China by 2010 (**#3**), and holds **#3 in 2024**
+(China 24.8%, Japan 18.8%, Germany 18.0%). The UK falls furthest —
+#4 in 1991 to **last (#9) in 2024**; France slides #5 → #8. China enters
+the chart at #1 in 2010 (its series starts 2004 at 31.5%) and never
+gives the top spot back.
+
+**Q16. Where in the country × year grid are the strong and weak
+manufacturing eras?**
+Visual: **Heatmap** (manufacturing share %, 10 panel countries × 34 years,
+colour-scaled 7–32%).
+Answer: The darkest cells cluster in each country's earliest years —
+the whole panel has faded since the 1990s. **China is the darkest row**
+throughout (peak **32.0% in 2006**; still the panel's highest at 24.8%
+in 2024). The 2009 crisis column pales visibly for the European rows —
+Germany 17.3%, Italy 13.7%, EU 13.8%, each at or near its row minimum.
+The UK row fades most steadily of all, 16.2% → 8.0% with no recovery
+column anywhere.
+
+**Q17. Did any panel country actually gain manufacturing share?**
+Visual: **Diverging bar chart** (change in manufacturing share,
+first available year → latest, percentage points, diverging from zero).
+Answer: **No — all ten bars point left.** UK −8.2 pp (16.2% → 8.0%,
+1991–2024) lost most, then China −6.7 pp (2004–2024), **Germany −6.6 pp
+(24.6% → 18.0%)**, France −6.2 pp, US −5.6 pp (1997–2021), EU −5.4 pp,
+Japan −4.6 pp (1994–2024), World −4.3 pp (1997–2024), Italy −4.2 pp and
+Poland −3.2 pp (1995–2024) least. Losing share is universal; only the
+speed differs.
+
+**Q18. Same transition, or ten different ones?**
+Visual: **Small multiples** (one manufacturing-share trend panel per
+panel country, 1991–2024, uniform 0–35% scale).
+Answer: Ten different shapes. Germany, Italy and the EU fall steeply in
+the 1990s then plateau; France slides almost monotonically (15.7% →
+9.6%); the UK's line is the steepest continuous descent; China draws a
+high arc peaking at 32.0% in 2006; Japan steps down gently from the
+panel's highest starting plateau (23.4% in 1994); **Poland is the only
+clear U-turn** — dipping to 14.1% in 2002, then recovering to 16.1% by
+2024. The US panel is the shortest (1997–2021).
+
+**Q19. What does the 2023 manufacturing map of Europe look like?**
+Visual: **Tile map** (one square per country, position ≈ geography,
+colour = manufacturing share of GDP, 2023; 43 European countries from
+the 183-country cross-section).
+Answer: **San Marino 31.8%** and **Ireland 29.8%** top the map, but the
+structural story is the Central-European belt: Czechia 20.4%, Slovenia
+19.5%, Switzerland 19.4%, **Germany 18.9%**, Poland 17.5%, Hungary 17.2%
+and Slovakia 16.9% form a contiguous high-share core — Germany ranks
+**#8 of the 43 European countries mapped**. The west and north-west are
+pale (France 9.8%, UK 8.2%, Norway 5.6%); the lowest tiles are
+Montenegro 2.9%, Andorra 3.4% and Luxembourg 4.1%.
+
+---
+
 Coverage checklist (Power BI visual palette): KPI card ✓ · gauge ✓ · line ✓ ·
 100% stacked column ✓ · stacked column ✓ · waterfall ✓ · clustered bar ✓ ·
 bar (change) ✓ · donut ✓ · treemap ✓ · scatter ✓ · filled map ✓ · ribbon ✓ ·
 matrix + decomposition tree ✓ — plus slicers, bookmarks and drill-through
-(layout spec).
+(layout spec). Retrofit additions: bump chart ✓ · heatmap (matrix with
+colour scale) ✓ · diverging bar ✓ · small multiples (small-multiple line
+panels) ✓ · tile map ✓.

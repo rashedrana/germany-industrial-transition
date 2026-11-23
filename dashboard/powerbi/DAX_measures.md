@@ -181,6 +181,72 @@ Selected Year Label =
 "Focus year: " & SELECTEDVALUE ( DimYear[Year], 2024 )
 ```
 
+## Retrofit measures (Q15–Q19, added 2026-11-23)
+
+For the bump chart (Q15), each snapshot year (1991 / 2000 / 2010 / 2024)
+gets its own rank measure so the four rank columns sit side by side;
+ranks are computed only over panel countries that have a value that year.
+
+```dax
+Manufacturing Share Rank 1991 =
+VAR Y = 1991
+RETURN
+    RANKX (
+        FILTER ( ALL ( DimCountry ), NOT ISBLANK ( CALCULATE ( [Manufacturing Share %], DimYear[Year] = Y ) ) ),
+        CALCULATE ( [Manufacturing Share %], DimYear[Year] = Y ),
+        ,
+        DESC,
+        DENSE
+    )
+```
+(Duplicate as `... Rank 2000`, `... Rank 2010`, `... Rank 2024` with
+Y = 2000 / 2010 / 2024.)
+
+For the diverging bar (Q17) — first and last available values per country,
+so series that start late (China 2004, Poland 1995) or end early
+(US 2021) are compared over their own span:
+
+```dax
+Manufacturing Share % (First Available) =
+VAR FirstYear =
+    CALCULATE ( MIN ( FactCountryYear[YearKey] ), NOT ISBLANK ( FactCountryYear[ManufShare_Pct] ) )
+RETURN
+    CALCULATE ( [Manufacturing Share %], DimYear[Year] = FirstYear )
+```
+
+```dax
+Manufacturing Share % (Last Available) =
+VAR LastYear =
+    CALCULATE ( MAX ( FactCountryYear[YearKey] ), NOT ISBLANK ( FactCountryYear[ManufShare_Pct] ) )
+RETURN
+    CALCULATE ( [Manufacturing Share %], DimYear[Year] = LastYear )
+```
+
+```dax
+Manufacturing Share Change First to Last (pp) =
+[Manufacturing Share % (Last Available)] - [Manufacturing Share % (First Available)]
+```
+
+For the heatmap (Q16), anchor the matrix colour scale to the panel's
+observed range so the conditional formatting is stable across slicers:
+
+```dax
+Panel Min Manufacturing Share % =
+MINX ( ALL ( FactCountryYear ), FactCountryYear[ManufShare_Pct] )
+```
+
+```dax
+Panel Max Manufacturing Share % =
+MAXX ( ALL ( FactCountryYear ), FactCountryYear[ManufShare_Pct] )
+```
+
+For the tile map (Q19), reuse `Manufacturing Share 2023 %` (above) on a
+shape/tile visual filtered to European countries
+(`DimCountry_Full[Region] = "Europe & Central Asia"`, Central Asian
+states removed in the visual filter) — no new measure needed. The small
+multiples (Q18) reuse `Manufacturing Share %` with the country field in
+the small-multiples well of a line chart, y-axis fixed 0–35.
+
 ---
 
 Notes
